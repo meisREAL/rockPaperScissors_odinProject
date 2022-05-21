@@ -2,22 +2,43 @@ function computerPlay() {
     let randomChoice = Math.floor((Math.random() * 3) + 1);
 
     if (randomChoice === 1) {
-        computerChoice = "ROCK";
+        Choice = "ROCK";
     } else if (randomChoice === 2) {
-        computerChoice = "PAPER";
+        Choice = "PAPER";
     } else if (randomChoice === 3) {
-        computerChoice = "SCISSORS"
+        Choice = "SCISSORS"
     }
 
-    return computerChoice;
+    return Choice;
 }
 
 function playerSelection() {
 
-    let playerChoice = "";
+    var Choice = "";
 
-    while (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
-        playerChoice = prompt("Choose rock, paper or scissors").toUpperCase();
+    while (Choice != "ROCK" && Choice != "PAPER" && Choice != "SCISSORS") {
+        Choice = prompt("Choose rock, paper or scissors").toUpperCase();
     }
-    return playerChoice;
+    return Choice;
 }
+
+
+
+function playRound() {
+    computerChoice = computerPlay();
+    playerChoice = playerSelection();
+
+    if (computerChoice == "ROCK" && playerChoice == "SCISSORS") {
+        winner = "Computer";
+    } else if (computerChoice == "SCISSORS" && playerChoice == "PAPER") {
+        winner = "Computer";
+    } else if (computerChoice == "PAPER" && playerChoice == "ROCK") {
+        winner = "Computer";
+    } else if (computerChoice === playerChoice) {
+        winner = "Tie";
+    } else {
+        winner = "Player"
+    }
+    return winner;
+}
+
