@@ -42,3 +42,23 @@ function playRound() {
     return winner;
 }
 
+function game() {
+    var computerWin = 0;
+    var playerWin = 0;
+    for (let i = 0; i < 5; i++) {
+        let winner = playRound();
+        console.log("Game " + (1 + i));
+        if (winner == "Computer") {
+            computerWin++;
+            console.log("Computer won this round");
+        } else if (winner == "Player") {
+            console.log("You won this round");
+            playerWin++;
+        } else {
+            console.log("This was a tie!")
+        }
+    }
+    console.log("Computer won: " + computerWin + " games of 5");
+    console.log("Player won: " + playerWin + " games of 5");
+}
+

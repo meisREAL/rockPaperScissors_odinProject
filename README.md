@@ -1,7 +1,7 @@
 # rockPaperScissors_odinProject
-simple game of rock papper scissors
+simple game of rock paper scissors
 
-1. Create computer choice computerPlay
-2. get player choice playerSelection
-3. decide who won
+1. Create computer choice (computerPlay)
+2. get player choice (playerSelection)
+3. decide who won 
 4. declare winner
