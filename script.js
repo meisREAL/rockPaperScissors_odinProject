@@ -15,10 +15,14 @@ function computerPlay() {
 function playerSelection() {
 
     var Choice = "";
-
-    while (Choice != "ROCK" && Choice != "PAPER" && Choice != "SCISSORS") {
-        Choice = prompt("Choose rock, paper or scissors").toUpperCase();
+    if (btnRock) {
+        Choice = "ROCK";
+    } else if (btnPaper) {
+        Choice = "PAPER";
+    } else if (btnScissors) {
+        Choice = "SCISSORS"
     }
+
     return Choice;
 }
 
@@ -39,6 +43,7 @@ function playRound() {
     } else {
         winner = "Player"
     }
+    console.log(winner);
     return winner;
 }
 
@@ -61,4 +66,13 @@ function game() {
     console.log("Computer won: " + computerWin + " games of 5");
     console.log("Player won: " + playerWin + " games of 5");
 }
+
+//game();
+
+const btnRock = document.querySelector('#rock');
+const btnPaper = document.querySelector('#paper');
+const btnScissors = document.querySelector('#scissors')
+btnRock.addEventListener('click', playRound)
+btnPaper.addEventListener('click', playRound)
+btnScissors.addEventListener('click', playRound)
 
