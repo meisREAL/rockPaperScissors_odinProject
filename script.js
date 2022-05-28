@@ -47,47 +47,57 @@ function playRound() {
     return winner;
 }
 
-// function game() {
-//     var computerWin = 0;
-//     var playerWin = 0;
-//     for (let i = 0; i < 5; i++) {
-//         let winner = playRound();
-//         console.log("Game " + (1 + i));
-//         if (winner == "Computer") {
-//             computerWin++;
-//             console.log("Computer won this round");
-//         } else if (winner == "Player") {
-//             console.log("You won this round");
-//             playerWin++;
-//         } else {
-//             console.log("This was a tie!")
-//         }
-//     }
-//     console.log("Computer won: " + computerWin + " games of 5");
-//     console.log("Player won: " + playerWin + " games of 5");
-// }
+function game() {
+    const container = document.querySelector('#announcing');
+    let computerScore = document.querySelector(".computer");
+    let playerScore = document.querySelector(".player");
+    let tieScore = document.querySelector(".tie")
 
-//game();
+    var computerWin;
+    var playerWin;
+    var tie;
 
-function displayGame() {
     let winner = playRound();
 
-    const container = document.querySelector('#announcing');
-
-    if (winner == 'Computer') {
+    if (winner == "Computer") {
+        computerWin = Number(computerScore.innerHTML);
+        computerWin++;
         container.innerHTML = 'Computer won this round';
-    } else if (winner == 'Player') {
+        computerScore.innerHTML = computerWin;
+        return computerWin;
+    } else if (winner == "Player") {
+        playerWin = Number(playerScore.innerHTML);
         container.innerHTML = 'You won this round';
+        playerWin++;
+        playerScore.innerHTML = playerWin;
+        return playerWin;
     } else {
-        container.innerHTML = 'This was a ties'
+        container.innerHTML = 'This was a tie';
+        tie = Number(tieScore.innerHTML);
+        tie++;
+        tieScore.innerHTML = tie;
     }
 
 }
 
+function gameOver() {
+    let computerWin, playerWin = game();
+    if (computerWin == 5 || playerWin == 5) {
+        if (computerWin == 5) {
+            alert('Computer won 5 games, please refresh the page');
+        } else if (playerWin == 5) {
+            alert('you won 5 games, please refresh the page')
+        }
+    }
+}
+
+
 const btnRock = document.querySelector('#rock');
 const btnPaper = document.querySelector('#paper');
 const btnScissors = document.querySelector('#scissors')
-btnRock.addEventListener('click', displayGame)
-btnPaper.addEventListener('click', displayGame)
-btnScissors.addEventListener('click', displayGame)
+
+btnRock.addEventListener('click', gameOver)
+btnPaper.addEventListener('click', gameOver)
+btnScissors.addEventListener('click', gameOver)
+
 
